@@ -22,7 +22,6 @@ dotenv.config();
 
 // Database connection
 connectDB();
-startCleanupService();
 
 // Fix __dirname for ES modules
 const __filename = fileURLToPath(import.meta.url);
@@ -139,10 +138,7 @@ app.get("/api/health", (req, res) => {
 // app.use(seoMiddleware);
 
 // ✅ Catch-all route for React app (will be used for normal users)
-app.get("*", (req, res) => {
-  const indexPath = path.join(__dirname, "../frontend/build/index.html");
-  res.sendFile(indexPath);
-});
+
 
 // Error handling middleware
 app.use((err, req, res, next) => {
