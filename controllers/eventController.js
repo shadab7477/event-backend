@@ -875,7 +875,7 @@ export const getEvents = async (req, res) => {
     } = req.query;
 
     // Build query
-    const query = { isPublished };
+    const query = {};
 
     // Search
     if (search) {
@@ -937,10 +937,7 @@ export const getEvents = async (req, res) => {
 
     // Execute query
     const events = await Event.find(query)
-      .select("-adminReservations -promoCodes")
-      .skip(skip)
-      .limit(pageSize)
-      .sort(sort);
+      
 
     const totalEvents = await Event.countDocuments(query);
 
